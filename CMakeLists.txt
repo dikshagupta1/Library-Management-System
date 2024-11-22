@@ -47,5 +47,5 @@ add_executable(LibraryManagementSystem ${SOURCES})
 add_executable(tests ${TEST_SOURCES})
 
 # Link external libraries if needed (e.g., JSON library)
-target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain nlohmann_json::nlohmann_json)
+target_link_libraries(LibraryManagementSystem PRIVATE nlohmann_json::nlohmann_json)
