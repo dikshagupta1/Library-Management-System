@@ -1,7 +1,7 @@
 #ifndef MENUHANDLER_H
 #define MENUHANDLER_H
 
-#include "Library.h"
+#include "library.h"
 
 class MenuHandler {
 public:

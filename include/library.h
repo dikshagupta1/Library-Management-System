@@ -1,8 +1,8 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
-#include "Book.h"
-#include "Database.h"
+#include "book.h"
+#include "database.h"
 #include <vector>
 #include <string>
 

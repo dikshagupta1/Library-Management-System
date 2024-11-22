@@ -1,6 +1,6 @@
-#include "Library.h"
-#include "Book.h"
-#include "Database.h"
+#include "library.h"
+#include "book.h"
+#include "database.h"
 #include <iostream>
 #include <algorithm>
 

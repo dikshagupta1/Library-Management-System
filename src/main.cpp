@@ -1,6 +1,6 @@
-#include "CLIHandler.h"
-#include "MenuHandler.h"
-#include "Library.h"
+#include "cliHandler.h"
+#include "menuHandler.h"
+#include "library.h"
 #include <iostream>
 #include <vector>
 #include <string>
