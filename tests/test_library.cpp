@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "Library.h"
-#include "Book.h"
+#include "library.h"
+#include "book.h"
 
 // Test for adding a book
 TEST_CASE("Add a book to the library") {
