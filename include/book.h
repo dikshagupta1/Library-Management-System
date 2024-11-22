@@ -13,7 +13,7 @@ private:
 
 public:
     // Constructors
-    Book(int id, const std::string &title, const std::string &author, int year, bool available);
+    Book(int id, const std::string title, const std::string author, int year, bool available);
 
     // Member functions
     void display() const;
