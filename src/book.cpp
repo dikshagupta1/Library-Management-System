@@ -1,6 +1,6 @@
 #include "book.h"
 
-Book::Book(int id, std::string title, std::string author, int year)
+Book::Book(int id, std::string title, std::string author, int year, bool available)
     : id(id), title(std::move(title)), author(std::move(author)), year(year), available(true) {}
 
 const std::string& Book::getTitle() const { 
