@@ -18,6 +18,7 @@ private:
     void borrowBook(const std::vector<std::string>& args);
     void returnBook(const std::vector<std::string>& args);
     void listBooks();
+    void CLIHandler::displayHelp() const;
 };
 
 #endif // CLIHANDLER_H

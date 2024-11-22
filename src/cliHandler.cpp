@@ -40,7 +40,7 @@ void CLIHandler::addBook(const std::vector<std::string>& args) {
     std::string author = args[3];
     int year = std::stoi(args[4]);
 
-    Book book(title, author, year, id);
+    Book book(title, author, year, id, true);
     library.addBook(book);
 
     std::cout << "Book added successfully.\n";
@@ -56,11 +56,11 @@ void CLIHandler::searchBook(const std::vector<std::string>& args) {
     const std::string& query = args[2];
 
     if (mode == "title") {
-        library.findBook(query);
+        library.findBookByTitle(query);
     } else if (mode == "author") {
         library.findBookByAuthor(query);
     } else if (mode == "id") {
-        library.findBookByID(std::stoi(query));
+        library.findBookById(std::stoi(query));
     } else {
         std::cerr << "Error: Invalid search mode. Use 'title', 'author', or 'id'.\n";
     }
