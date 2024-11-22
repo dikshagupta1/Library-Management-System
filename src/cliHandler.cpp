@@ -6,13 +6,14 @@ CLIHandler::CLIHandler(Library& library) : library(library) {}
 
 void CLIHandler::handleCommand(const std::vector<std::string>& args) {
     if (args.empty()) {
-        std::cerr << "Error: No command provided.\n";
+        displayHelp();
         return;
     }
 
     const std::string& command = args[0];
-
-    if (command == "add") {
+    if (command == "help") {
+        displayHelp();
+    } else if (command == "add") {
         addBook(args);
     } else if (command == "search") {
         searchBook(args);
@@ -24,6 +25,7 @@ void CLIHandler::handleCommand(const std::vector<std::string>& args) {
         listBooks();
     } else {
         std::cerr << "Error: Unknown command '" << command << "'.\n";
+        displayHelp();
     }
 }
 
@@ -54,11 +56,11 @@ void CLIHandler::searchBook(const std::vector<std::string>& args) {
     const std::string& query = args[2];
 
     if (mode == "title") {
-        library.searchBooks(query);
+        library.findBook(query);
     } else if (mode == "author") {
-        library.searchBooksByAuthor(query);
+        library.findBookByAuthor(query);
     } else if (mode == "id") {
-        library.searchBooksByID(std::stoi(query));
+        library.findBookByID(std::stoi(query));
     } else {
         std::cerr << "Error: Invalid search mode. Use 'title', 'author', or 'id'.\n";
     }
@@ -96,4 +98,14 @@ void CLIHandler::returnBook(const std::vector<std::string>& args) {
 
 void CLIHandler::listBooks() {
     library.listBooks();
+}
+
+void CLIHandler::displayHelp() const {
+    std::cout << "Available commands:\n"
+              << "  help           Show this help message\n"
+              << "  add            Add a new book (title, author, year)\n"
+              << "  search         Search for a book using the modes - id, title or author \n"
+              << "  borrow         Borrow a book (title)\n"
+              << "  return         Return a borrowed book (title)\n"
+              << "  list           List all books in the library\n";
 }

@@ -12,9 +12,9 @@ private:
 
 public:
     void addBook(const Book& book);
-    void searchBookByTitle(const std::string& query) const;
-    void searchBookById(int id) const;
-    void searchBookByAuthor(const std::string& author) const;
+    void findBookByTitle(const std::string& query) const;
+    void findBookById(int id) const;
+    void findBookByAuthor(const std::string& author) const;
     bool borrowBook(const std::string& title);
     bool returnBook(const std::string& title);
     void listBooks() const;;

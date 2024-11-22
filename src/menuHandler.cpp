@@ -45,12 +45,35 @@ void MenuHandler::addBook() {
 }
 
 void MenuHandler::searchBook() {
-    std::string query;
-    std::cout << "Enter title or author to search: ";
-    std::cin.ignore();
-    std::getline(std::cin, query);
+    int searchType;
+    std::cout << "Search by:\n";
+    std::cout << "1. ID\n";
+    std::cout << "2. Title\n";
+    std::cout << "3. Author\n";
+    std::cout << "Enter your choice: ";
+    std::cin >> searchType;
 
-    library.searchBooks(query);
+    // Clear input buffer
+    std::cin.ignore(); 
+
+    if (searchType == 1) {
+        int id;
+        std::cout << "Enter Book ID: ";
+        std::cin >> id;
+        library.findBookByID(id);
+    } else if (searchType == 2) {
+        std::string title;
+        std::cout << "Enter Title: ";
+        std::getline(std::cin, title);
+        library.findBookByTitle(title);
+    } else if (searchType == 3) {
+        std::string author;
+        std::cout << "Enter Author Name: ";
+        std::getline(std::cin, author);
+        library.findBookByAuthor(author);
+    } else {
+        std::cout << "Invalid choice.\n";
+    }
 }
 
 void MenuHandler::borrowBook() {

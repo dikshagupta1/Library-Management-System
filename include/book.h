@@ -2,6 +2,7 @@
 #define BOOK_H
 
 #include <string>
+#include <iostream>
 
 class Book {
 private:
@@ -13,7 +14,7 @@ private:
 
 public:
     // Constructors
-    Book(int id, const std::string title, const std::string author, int year, bool available);
+    Book(int id, const std::string title, const std::string author, int year);
 
     // Member functions
     void display() const;

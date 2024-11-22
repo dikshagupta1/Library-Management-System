@@ -1,6 +1,6 @@
 #include "book.h"
 
-Book::Book(int id, std::string title, std::string author, int year, bool available)
+Book::Book(int id, std::string title, std::string author, int year)
     : id(id), title(std::move(title)), author(std::move(author)), year(year), available(true) {}
 
 const std::string& Book::getTitle() const { 
@@ -32,9 +32,9 @@ void Book::returnBook() {
     }
 
 std::ostream& operator<<(std::ostream& os, const Book& book) {
-    os << "Id: " << book.id 
-        << ", Title: " << book.title
-       << ", Author: " << book.author 
+    os << "Id: " << book.id
+       << ", Title: " << book.title
+       << ", Author: " << book.author
        << ", Year: " << book.year
        << ", Available: " << (book.available ? "Yes" : "No");
     return os;

@@ -42,7 +42,7 @@ void Library::listBooks() const {
 }
 
 // Search book by ID
-void Library::searchBookById(int id) const {
+void Library::findBookById(int id) const {
      for (const auto& book : books) {
         if (book.getId() == id) {
             std::cout << book << "\n";
@@ -53,7 +53,7 @@ void Library::searchBookById(int id) const {
 }
 
 // Search book by Title
-void Library::searchBookByTitle(const std::string& query) const {
+void Library::findBookByTitle(const std::string& query) const {
     for (const auto& book : books) {
         if (book.getTitle() == query) {
             std::cout << book << "\n";
@@ -64,7 +64,7 @@ void Library::searchBookByTitle(const std::string& query) const {
 }
 
 // Search book by Author
-void Library::searchBookByAuthor(const std::string& author) const {
+void Library::findBookByAuthor(const std::string& author) const {
      for (const auto& book : books) {
         if (book.getAuthor() == author) {
             std::cout << book << "\n";
