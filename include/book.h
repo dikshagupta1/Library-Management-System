@@ -23,7 +23,7 @@ public:
     const std::string& getTitle() const;
     const std::string& getAuthor() const;
     int getYear() const;
-    int getID() const;
+    int getId() const;
     bool isAvailable() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Book& book);

@@ -15,7 +15,7 @@ int Book::getYear() const {
     return year; 
     }
 
-int Book::getID() const { 
+int Book::getId() const { 
     return id; 
     }
 
