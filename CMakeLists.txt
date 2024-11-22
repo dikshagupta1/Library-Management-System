@@ -16,7 +16,7 @@ set(SOURCES
 )
 
 # Include directories
-include_directories(include)
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
 
 
