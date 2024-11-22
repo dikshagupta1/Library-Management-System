@@ -40,7 +40,7 @@ void CLIHandler::addBook(const std::vector<std::string>& args) {
     std::string author = args[3];
     int year = std::stoi(args[4]);
 
-    Book book(title, author, year, id, true);
+    Book book(id, title, author, year, true);
     library.addBook(book);
 
     std::cout << "Book added successfully.\n";

@@ -31,7 +31,9 @@ void MenuHandler::start() {
 
 void MenuHandler::addBook() {
     std::string title, author;
-    int year;
+    int id,year;
+    std::cout << "Enter id: ";
+    std::cin >> id;
     std::cout << "Enter title: ";
     std::cin.ignore();
     std::getline(std::cin, title);
@@ -40,7 +42,7 @@ void MenuHandler::addBook() {
     std::cout << "Enter year: ";
     std::cin >> year;
 
-    library.addBook(Book(title, author, year));
+    library.addBook(Book(id, title, author, year, true));
     std::cout << "Book added successfully.\n";
 }
 
