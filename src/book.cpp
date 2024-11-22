@@ -1,7 +1,7 @@
 #include "book.h"
 
-Book::Book(std::string title, std::string author, int year, int id)
-    : title(std::move(title)), author(std::move(author)), year(year), id(id), available(true) {}
+Book::Book(int id, std::string title, std::string author, int year, bool available)
+    : title(id(id), std::move(title)), author(std::move(author)), year(year), available(true) {}
 
 const std::string& Book::getTitle() const { 
     return title; 
@@ -26,13 +26,13 @@ bool Book::isAvailable() const {
 void Book::borrow() { 
     available = false; 
     }
-    
+
 void Book::returnBook() { 
     available = true; 
     }
 
 std::ostream& operator<<(std::ostream& os, const Book& book) {
-    os << "ID: " << book.id << ", Title: " << book.title
+    os << "Id: " << book.id << ", Title: " << book.title
        << ", Author: " << book.author << ", Year: " << book.year
        << ", Available: " << (book.available ? "Yes" : "No");
     return os;
