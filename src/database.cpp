@@ -19,7 +19,7 @@ void Database::saveData(const std::vector<Book> &books) {
 
 std::vector<Book> Database::loadData() {
     std::vector<Book> books;
-    std::ifstream file("books.json");
+    std::ifstream file(LIBRARY_FILE);
     if (file) {
         json j;
         file >> j;

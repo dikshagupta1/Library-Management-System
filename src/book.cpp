@@ -1,30 +1,39 @@
 #include "book.h"
-#include <iostream>
-#include <iomanip>
 
-void Book::inputDetails() {
-    std::cout << "Enter Book ID: ";
-    std::cin >> id;
-    std::cin.ignore();
-    std::cout << "Enter Title: ";
-    std::getline(std::cin, title);
-    std::cout << "Enter Author: ";
-    std::getline(std::cin, author);
-    std::cout << "Enter Year: ";
-    std::cin >> year;
-    available = true;
-}
+Book::Book(std::string title, std::string author, int year, int id)
+    : title(std::move(title)), author(std::move(author)), year(year), id(id), available(true) {}
 
-void Book::display() const {
-    std::cout << std::left << std::setw(10) << id << std::setw(30) << title
-              << std::setw(20) << author << std::setw(10) << year
-              << std::setw(15) << (available ? "Yes" : "No") << "\n";
-}
+const std::string& Book::getTitle() const { 
+    return title; 
+    }
 
-void Book::borrow() {
-    available = false;
-}
+const std::string& Book::getAuthor() const { 
+    return author; 
+    }
 
-void Book::returnBook() {
-    available = true;
+int Book::getYear() const { 
+    return year; 
+    }
+
+int Book::getID() const { 
+    return id; 
+    }
+
+bool Book::isAvailable() const { 
+    return available; 
+    }
+
+void Book::borrow() { 
+    available = false; 
+    }
+    
+void Book::returnBook() { 
+    available = true; 
+    }
+
+std::ostream& operator<<(std::ostream& os, const Book& book) {
+    os << "ID: " << book.id << ", Title: " << book.title
+       << ", Author: " << book.author << ", Year: " << book.year
+       << ", Available: " << (book.available ? "Yes" : "No");
+    return os;
 }

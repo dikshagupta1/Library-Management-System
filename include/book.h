@@ -29,6 +29,8 @@ public:
     std::string getAuthor() const { return author; }
     int getYear() const { return year; }
     bool isAvailable() const { return available; }
+
+    friend std::ostream& operator<<(std::ostream& os, const Book& book);
 };
 
 #endif // BOOK_H

@@ -5,110 +5,70 @@
 #include <algorithm>
 
 // Add a book to the library
-void Library::addBook() {
-    Book newBook;
-    newBook.inputDetails();
-    books.push_back(newBook);
+void Library::addBook(const Book& book) {
+    books.push_back(book);
     saveData();
-    std::cout << "Book added successfully!" << std::endl;
 }
 
 // Borrow a book
-void Library::borrowBook() {
-    int id;
-    std::cout << "Enter the book ID to borrow: ";
-    std::cin >> id;
-
-    auto it = std::find_if(books.begin(), books.end(), [id](const Book &book) {
-        return book.getId() == id && book.isAvailable();
-    });
-
-    if (it != books.end()) {
-        it->borrow();
-        saveData();
-        std::cout << "Book borrowed successfully!" << std::endl;
-    } else {
-        std::cout << "Book not available or invalid ID." << std::endl;
+bool Library::borrowBook(const std::string& title) {
+    for (auto& book : books) {
+        if (book.getTitle() == title && book.isAvailable()) {
+            book.borrow();
+            saveData();
+            return true;
+        }
     }
+    return false;
 }
 
 // Return a borrowed book
-void Library::returnBook() {
-    int id;
-    std::cout << "Enter the book ID to return: ";
-    std::cin >> id;
-
-    auto it = std::find_if(books.begin(), books.end(), [id](const Book &book) {
-        return book.getId() == id && !book.isAvailable();
-    });
-
-    if (it != books.end()) {
-        it->returnBook();
-        saveData();
-        std::cout << "Book returned successfully!" << std::endl;
-    } else {
-        std::cout << "Invalid ID or the book was not borrowed." << std::endl;
+bool Library::returnBook(const std::string& title) {
+    for (auto& book : books) {
+        if (book.getTitle() == title && !book.isAvailable()) {
+            book.returnBook();
+            saveData();
+            return true;
+        }
     }
+    return false;
 }
 
 // List all books
 void Library::listBooks() const {
-    std::cout << "Library Books List:" << std::endl;
     for (const auto &book : books) {
         book.display();
     }
 }
 
 // Search book by ID
-void Library::searchBookById() const {
-    int id;
-    std::cout << "Enter book ID: ";
-    std::cin >> id;
-
-    auto it = std::find_if(books.begin(), books.end(), [id](const Book &book) {
-        return book.getId() == id;
-    });
-
-    if (it != books.end()) {
-        it->display();
-    } else {
-        std::cout << "No book found with ID " << id << std::endl;
+void Library::searchBookById(int id) const {
+     for (const auto& book : books) {
+        if (book.getID() == id) {
+            std::cout << book << "\n";
+            return;
+        }
     }
+    std::cout << "No book found with ID: " << id << "\n";
 }
 
 // Search book by Title
-void Library::searchBookByTitle() const {
-    std::string title;
-    std::cout << "Enter book title: ";
-    std::cin.ignore();  // To handle any leftover newline character
-    std::getline(std::cin, title);
-
-    auto it = std::find_if(books.begin(), books.end(), [&title](const Book &book) {
-        return book.getTitle() == title;
-    });
-
-    if (it != books.end()) {
-        it->display();
-    } else {
-        std::cout << "No book found with title " << title << std::endl;
+void Library::searchBookByTitle(const std::string& query) const {
+    for (const auto& book : books) {
+        if (book.getTitle() == query) {
+            std::cout << book << "\n";
+            return;
+        }
     }
+    std::cout << "No book found with title: " << query << "\n";
 }
 
 // Search book by Author
-void Library::searchBookByAuthor() const {
-    std::string author;
-    std::cout << "Enter author name: ";
-    std::cin.ignore();
-    std::getline(std::cin, author);
-
-    auto it = std::find_if(books.begin(), books.end(), [&author](const Book &book) {
-        return book.getAuthor() == author;
-    });
-
-    if (it != books.end()) {
-        it->display();
-    } else {
-        std::cout << "No books found by author " << author << std::endl;
+void Library::searchBookByAuthor(const std::string& author) const {
+     for (const auto& book : books) {
+        if (book.getAuthor() == author) {
+            std::cout << book << "\n";
+        }
     }
 }
 

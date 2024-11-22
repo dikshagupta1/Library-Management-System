@@ -5,8 +5,12 @@
 #include <vector>
 #include <string>
 
+
 int main(int argc, char* argv[]) {
     Library library;
+
+    // Load existing data
+    library.loadData();
 
     if (argc > 1) {
         // Use CLI approach
