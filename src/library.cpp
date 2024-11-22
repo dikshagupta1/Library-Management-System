@@ -36,8 +36,8 @@ bool Library::returnBook(const std::string& title) {
 
 // List all books
 void Library::listBooks() const {
-    for (const auto &book : books) {
-        book.display();
+   for (const auto& book : books) {
+        std::cout << book << "\n";
     }
 }
 

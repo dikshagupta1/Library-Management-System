@@ -62,7 +62,7 @@ void MenuHandler::searchBook() {
         int id;
         std::cout << "Enter Book ID: ";
         std::cin >> id;
-        library.findBookByID(id);
+        library.findBookById(id);
     } else if (searchType == 2) {
         std::string title;
         std::cout << "Enter Title: ";
