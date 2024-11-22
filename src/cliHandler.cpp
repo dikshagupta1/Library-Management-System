@@ -95,5 +95,5 @@ void CLIHandler::returnBook(const std::vector<std::string>& args) {
 }
 
 void CLIHandler::listBooks() {
-    library.displayBooks();
+    library.listBooks();
 }

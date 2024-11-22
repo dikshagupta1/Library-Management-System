@@ -80,5 +80,5 @@ void MenuHandler::returnBook() {
 }
 
 void MenuHandler::listBooks() {
-    library.displayBooks();
+    library.listBooks();
 }

@@ -7,7 +7,7 @@
 // Add a book to the library
 void Library::addBook(const Book& book) {
     books.push_back(book);
-    saveData();
+    saveToDb();
 }
 
 // Borrow a book
@@ -15,7 +15,7 @@ bool Library::borrowBook(const std::string& title) {
     for (auto& book : books) {
         if (book.getTitle() == title && book.isAvailable()) {
             book.borrow();
-            saveData();
+            saveToDb();
             return true;
         }
     }
@@ -27,7 +27,7 @@ bool Library::returnBook(const std::string& title) {
     for (auto& book : books) {
         if (book.getTitle() == title && !book.isAvailable()) {
             book.returnBook();
-            saveData();
+            saveToDb();
             return true;
         }
     }
@@ -44,7 +44,7 @@ void Library::listBooks() const {
 // Search book by ID
 void Library::searchBookById(int id) const {
      for (const auto& book : books) {
-        if (book.getID() == id) {
+        if (book.getId() == id) {
             std::cout << book << "\n";
             return;
         }
@@ -73,11 +73,11 @@ void Library::searchBookByAuthor(const std::string& author) const {
 }
 
 // Save the current state of the library to a file
-void Library::saveData() const {
+void Library::saveToDb() const {
     Database::saveData(books);
 }
 
 // Load the data from the file
-void Library::loadData() {
+void Library::loadFromDb() {
     books = Database::loadData();
 }

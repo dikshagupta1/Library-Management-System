@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     Library library;
 
     // Load existing data
-    library.loadData();
+    library.loadFromDb();
 
     if (argc > 1) {
         // Use CLI approach

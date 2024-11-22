@@ -17,9 +17,9 @@ public:
     void searchBookByAuthor(const std::string& author) const;
     bool borrowBook(const std::string& title);
     bool returnBook(const std::string& title);
-    void displayBooks() const;;
-    void saveData() const;
-    void loadData();
+    void listBooks() const;;
+    void saveToDb() const;
+    void loadFromDb();
 };
 
 #endif // LIBRARY_H
