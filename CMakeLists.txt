@@ -15,10 +15,18 @@ set(SOURCES
     src/menuHandler.cpp
 )
 
+# Add the test executable, sharing source files (except main.cpp)
+set(TEST_SOURCES
+    tests/test_library.cpp
+    src/library.cpp
+    src/book.cpp
+    src/database.cpp
+    src/cliHandler.cpp
+    src/menuHandler.cpp
+)
+
 # Include directories
 include_directories(${CMAKE_SOURCE_DIR}/include)
-
-
 
 # Add the nlohmann/json header-only library
 include(FetchContent)
@@ -36,8 +44,8 @@ FetchContent_MakeAvailable(Catch2)
 
 # Add executable target
 add_executable(LibraryManagementSystem ${SOURCES})
-add_executable(tests tests/test_library.cpp)
+add_executable(tests ${TEST_SOURCES})
 
 # Link external libraries if needed (e.g., JSON library)
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
-target_link_libraries(LibraryManagementSystem PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(tests PRIVATE Catch2::Catch2WithMain nlohmann_json::nlohmann_json)
