@@ -5,8 +5,9 @@
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
+namespace fs = std::filesystem;
 
-std::string Storage::getDataDirectory() const {
+std::string Storage::getDataDirectory() {
     // Get the environment variable LIBRARY_DATA_DIR
     const char* envPath = std::getenv("LIBRARY_DATA_DIR");
 
@@ -19,15 +20,8 @@ std::string Storage::getDataDirectory() const {
 }
 
 void Storage::saveData(const std::vector<Book> &books) {
-    std::string dataDir = getDataDirectory();
-
-    // Make sure the directory exists
-    if (!fs::exists(dataDir)) {
-        fs::create_directories(dataDir);
-    }
-
-    // Full path
-    std::string filePath = dataDirectory + "/" + LIBRARY_FILE;
+    // Get filePath
+    std::string filePath = formFilePath(getDataDirectory());
 
     // Read from File
     json j;
@@ -46,9 +40,8 @@ void Storage::saveData(const std::vector<Book> &books) {
 }
 
 std::vector<Book> Storage::loadData() {
-    // Get dir and form the path
-    std::string dataDirectory = getDataDirectory();
-    std::string filePath = dataDirectory + "/" + LIBRARY_FILE;
+    // Get filePath
+    std::string filePath = formFilePath(getDataDirectory());
 
     // Write to file
     std::vector<Book> books;
@@ -63,4 +56,13 @@ std::vector<Book> Storage::loadData() {
         }
     }
     return books;
+}
+
+std::string formFilePath(std::string dataDir) {
+    // IF directory doesnt exist, create one
+    if (!fs::exists(dataDir)) {
+        fs::create_directories(dataDir);
+    }
+
+    return dataDiry + "/" + LIBRARY_FILE;
 }
