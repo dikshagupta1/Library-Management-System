@@ -13,7 +13,7 @@ void Library::addBook(const Book& book) {
 // Borrow a book
 bool Library::borrowBook(int id) {
     for (auto& book : books) {
-        if (book.getId() == title && book.isAvailable()) {
+        if (book.getId() == id && book.isAvailable()) {
             book.borrow();
             saveToDb();
             return true;
@@ -25,7 +25,7 @@ bool Library::borrowBook(int id) {
 // Return a borrowed book
 bool Library::returnBook(int id) {
     for (auto& book : books) {
-        if (book.getId() == title && !book.isAvailable()) {
+        if (book.getId() == id && !book.isAvailable()) {
             book.returnBook();
             saveToDb();
             return true;

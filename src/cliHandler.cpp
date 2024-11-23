@@ -68,13 +68,13 @@ void CLIHandler::searchBook(const std::vector<std::string>& args) {
 
 void CLIHandler::borrowBook(const std::vector<std::string>& args) {
     if (args.size() < 2) {
-        std::cerr << "Usage: borrow <title>\n";
+        std::cerr << "Usage: borrow <id>\n";
         return;
     }
 
-    const std::string& title = args[1];
+    int id = args[1];
 
-    if (library.borrowBook(title)) {
+    if (library.borrowBook(id)) {
         std::cout << "Book borrowed successfully.\n";
     } else {
         std::cerr << "Error: Book is unavailable or not found.\n";
@@ -83,13 +83,13 @@ void CLIHandler::borrowBook(const std::vector<std::string>& args) {
 
 void CLIHandler::returnBook(const std::vector<std::string>& args) {
     if (args.size() < 2) {
-        std::cerr << "Usage: return <title>\n";
+        std::cerr << "Usage: return <id>\n";
         return;
     }
 
-    const std::string& title = args[1];
+    int id = args[1];
 
-    if (library.returnBook(title)) {
+    if (library.returnBook(id)) {
         std::cout << "Book returned successfully.\n";
     } else {
         std::cerr << "Error: Book was not borrowed or not found.\n";
@@ -103,9 +103,9 @@ void CLIHandler::listBooks() {
 void CLIHandler::displayHelp() const {
     std::cout << "Available commands:\n"
               << "  help           Show this help message\n"
-              << "  add            Add a new book (title, author, year)\n"
+              << "  add            Add a new book (id, title, author, year)\n"
               << "  search         Search for a book using the modes - id, title or author \n"
-              << "  borrow         Borrow a book (title)\n"
-              << "  return         Return a borrowed book (title)\n"
+              << "  borrow         Borrow a book (id)\n"
+              << "  return         Return a borrowed book (id)\n"
               << "  list           List all books in the library\n";
 }
