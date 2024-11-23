@@ -17,7 +17,7 @@ public:
     void findBookByAuthor(const std::string& author) const;
     bool borrowBook(int id);
     bool returnBook(int id);
-    void listBooks() const;;
+    void listBooks() const;
     void saveToDb() const;
     void loadFromDb();
 };
