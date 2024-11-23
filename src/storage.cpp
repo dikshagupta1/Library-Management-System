@@ -20,8 +20,13 @@ std::string Storage::getDataDirectory() {
 }
 
 void Storage::saveData(const std::vector<Book> &books) {
-    // Get filePath
-    std::string filePath = formFilePath(getDataDirectory());
+    std::string dataDir = getDataDirectory();
+    // If directory doesnt exist, create one
+    if (!fs::exists(dataDir)) {
+        fs::create_directories(dataDir);
+    }
+    // Full path
+    std::string filePath = dataDir + "/" + LIBRARY_FILE;
 
     // Read from File
     json j;
@@ -40,8 +45,9 @@ void Storage::saveData(const std::vector<Book> &books) {
 }
 
 std::vector<Book> Storage::loadData() {
-    // Get filePath
-    std::string filePath = formFilePath(getDataDirectory());
+    // Get dir and form the path
+    std::string dataDir = getDataDirectory();
+    std::string filePath = dataDir + "/" + LIBRARY_FILE;
 
     // Write to file
     std::vector<Book> books;
@@ -56,13 +62,4 @@ std::vector<Book> Storage::loadData() {
         }
     }
     return books;
-}
-
-std::string formFilePath(std::string dataDir) {
-    // IF directory doesnt exist, create one
-    if (!fs::exists(dataDir)) {
-        fs::create_directories(dataDir);
-    }
-
-    return dataDiry + "/" + LIBRARY_FILE;
-}
+}    
