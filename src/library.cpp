@@ -11,9 +11,9 @@ void Library::addBook(const Book& book) {
 }
 
 // Borrow a book
-bool Library::borrowBook(const std::string& title) {
+bool Library::borrowBook(int id) {
     for (auto& book : books) {
-        if (book.getTitle() == title && book.isAvailable()) {
+        if (book.getId() == title && book.isAvailable()) {
             book.borrow();
             saveToDb();
             return true;
@@ -23,9 +23,9 @@ bool Library::borrowBook(const std::string& title) {
 }
 
 // Return a borrowed book
-bool Library::returnBook(const std::string& title) {
+bool Library::returnBook(int id) {
     for (auto& book : books) {
-        if (book.getTitle() == title && !book.isAvailable()) {
+        if (book.getId() == title && !book.isAvailable()) {
             book.returnBook();
             saveToDb();
             return true;

@@ -15,8 +15,8 @@ public:
     void findBookByTitle(const std::string& query) const;
     void findBookById(int id) const;
     void findBookByAuthor(const std::string& author) const;
-    bool borrowBook(const std::string& title);
-    bool returnBook(const std::string& title);
+    bool borrowBook(int id);
+    bool returnBook(int id);
     void listBooks() const;;
     void saveToDb() const;
     void loadFromDb();
