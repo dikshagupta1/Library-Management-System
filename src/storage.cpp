@@ -6,7 +6,7 @@
 
 using json = nlohmann::json;
 
-std::string Library::getDataDirectory() const {
+std::string Storage::getDataDirectory() const {
     // Get the environment variable LIBRARY_DATA_DIR
     const char* envPath = std::getenv("LIBRARY_DATA_DIR");
 
