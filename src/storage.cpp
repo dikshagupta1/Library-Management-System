@@ -13,16 +13,20 @@ void Storage::saveData(const std::vector<Book> &books) {
                      {"year", book.getYear()},
                      {"available", book.isAvailable()}});
     }
-    std::ofstream file("books.json");
-    file << j.dump(4);
+    std::ofstream file(LIBRARY_FILE);
+    if (file.is_open()) {
+        // Pretty print with 4 spaces
+        file << j.dump(4);
+    }
 }
 
 std::vector<Book> Storage::loadData() {
     std::vector<Book> books;
     std::ifstream file(LIBRARY_FILE);
-    if (file) {
+    if (file.is_open()) {
         json j;
         file >> j;
+        books.clear();
         for (const auto &item : j) {
             Book book(item["id"], item["title"], item["author"], item["year"], item["available"]);
             books.push_back(book);
