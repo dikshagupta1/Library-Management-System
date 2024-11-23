@@ -35,7 +35,7 @@ void CLIHandler::addBook(const std::vector<std::string>& args) {
         return;
     }
 
-    int id = validateId(args[1])
+    int id = validateId(args[1]);
     if (id == 0) {
         return;
     }
@@ -75,7 +75,7 @@ void CLIHandler::borrowBook(const std::vector<std::string>& args) {
         return;
     }
 
-    int id = validateId(args[1])
+    int id = validateId(args[1]);
     if (id == 0) {
         return;
     }
@@ -93,7 +93,7 @@ void CLIHandler::returnBook(const std::vector<std::string>& args) {
         return;
     }
 
-    int id = validateId(args[1])
+    int id = validateId(args[1]);
     if (id == 0) {
         return;
     }
@@ -127,5 +127,5 @@ int validateId(const std::string& input) {
     } catch (const std::out_of_range& e) {
         std::cerr << "Error: ID value is out of range.\n";
     }
-    return 0
+    return 0;
 }
