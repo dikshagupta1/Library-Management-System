@@ -37,7 +37,7 @@ void CLIHandler::addBook(const std::vector<std::string>& args) {
 
     int id = validateId(args[1])
     if (id == 0) {
-        return
+        return;
     }
     std::string title = args[2];
     std::string author = args[3];
@@ -77,7 +77,7 @@ void CLIHandler::borrowBook(const std::vector<std::string>& args) {
 
     int id = validateId(args[1])
     if (id == 0) {
-        return
+        return;
     }
 
     if (library.borrowBook(id)) {
@@ -95,7 +95,7 @@ void CLIHandler::returnBook(const std::vector<std::string>& args) {
 
     int id = validateId(args[1])
     if (id == 0) {
-        return
+        return;
     }
 
     if (library.returnBook(id)) {
@@ -119,7 +119,7 @@ void CLIHandler::displayHelp() const {
               << "  list           List all books in the library\n";
 }
 
-int validateId(const std::string& str input) {
+int validateId(const std::string& input) {
     try {
         return std::stoi(input);
     } catch (const std::invalid_argument& e) {
