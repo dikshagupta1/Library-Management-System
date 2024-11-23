@@ -2,7 +2,7 @@
 #include "catch2/catch_test_macros.hpp"
 #include "library.h"
 #include "book.h"
-#include "database.h"
+#include "storage.h"
 #include <sstream>
 
 TEST_CASE("Library: Add Book") {

@@ -1,10 +1,10 @@
-#include "database.h"
+#include "storage.h"
 #include <fstream>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
-void Database::saveData(const std::vector<Book> &books) {
+void Storage::saveData(const std::vector<Book> &books) {
     json j;
     for (const auto &book : books) {
         j.push_back({{"id", book.getId()},
@@ -17,7 +17,7 @@ void Database::saveData(const std::vector<Book> &books) {
     file << j.dump(4);
 }
 
-std::vector<Book> Database::loadData() {
+std::vector<Book> Storage::loadData() {
     std::vector<Book> books;
     std::ifstream file(LIBRARY_FILE);
     if (file) {

@@ -1,6 +1,6 @@
 #include "library.h"
 #include "book.h"
-#include "database.h"
+#include "storage.h"
 #include <iostream>
 #include <algorithm>
 
@@ -74,10 +74,10 @@ void Library::findBookByAuthor(const std::string& author) const {
 
 // Save the current state of the library to a file
 void Library::saveToDb() const {
-    Database::saveData(books);
+    Storage::saveData(books);
 }
 
 // Load the data from the file
 void Library::loadFromDb() {
-    books = Database::loadData();
+    books = Storage::loadData();
 }

@@ -2,7 +2,7 @@
 #define LIBRARY_H
 
 #include "book.h"
-#include "database.h"
+#include "storage.h"
 #include <vector>
 #include <string>
 

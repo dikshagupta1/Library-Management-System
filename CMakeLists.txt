@@ -10,7 +10,7 @@ set(SOURCES
     src/main.cpp
     src/library.cpp
     src/book.cpp
-    src/database.cpp
+    src/storage.cpp
     src/cliHandler.cpp
     src/menuHandler.cpp
 )
@@ -20,7 +20,7 @@ set(TEST_SOURCES
     tests/test_library.cpp
     src/library.cpp
     src/book.cpp
-    src/database.cpp
+    src/storage.cpp
     src/cliHandler.cpp
     src/menuHandler.cpp
 )

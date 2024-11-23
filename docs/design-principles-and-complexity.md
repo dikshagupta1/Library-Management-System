@@ -2,7 +2,7 @@
 ### Design Principles
 1. **Single Responsibility Principle (SRP)**:
    - Definition: A class should have only one reason to change, meaning it should have only one responsibility or job.
-   - Each class has a single responsibility: `Book` represents data, `Library` handles operations, and `Database` manages persistence.
+   - Each class has a single responsibility: `Book` represents data, `Library` handles operations, and `Storage` manages persistence.
 
 2. **Open/Closed Principle (OCP)**:
    - Definition: Software entities (classes, modules, functions, etc.) should be open for extension but closed for modification.

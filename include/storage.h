@@ -1,15 +1,15 @@
-#ifndef DATABASE_H
-#define DATABASE_H
+#ifndef STORAGE_H
+#define STORAGE_H
 
 #include "book.h"
 #include <vector>
 
 const std::string LIBRARY_FILE = "library-db.json";
 
-class Database {
+class Storage {
 public:
     static void saveData(const std::vector<Book> &books);
     static std::vector<Book> loadData();
 };
 
-#endif // DATABASE_H
+#endif // STORAGE_H
