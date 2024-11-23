@@ -79,12 +79,11 @@ void MenuHandler::searchBook() {
 }
 
 void MenuHandler::borrowBook() {
-    std::string title;
-    std::cout << "Enter title to borrow: ";
-    std::cin.ignore();
-    std::getline(std::cin, title);
+    int id;
+    std::cout << "Enter id to borrow: ";
+    std::cin >> id;
 
-    if (!library.borrowBook(title)) {
+    if (!library.borrowBook(id)) {
         std::cout << "Book not available or doesn't exist.\n";
     } else {
         std::cout << "Book borrowed successfully.\n";
@@ -92,12 +91,11 @@ void MenuHandler::borrowBook() {
 }
 
 void MenuHandler::returnBook() {
-    std::string title;
-    std::cout << "Enter title to return: ";
-    std::cin.ignore();
-    std::getline(std::cin, title);
+    int id;
+    std::cout << "Enter id to return: ";
+    std::cin >> id;
 
-    if (!library.returnBook(title)) {
+    if (!library.returnBook(id)) {
         std::cout << "Book not found in borrowed list.\n";
     } else {
         std::cout << "Book returned successfully.\n";
