@@ -35,7 +35,10 @@ void CLIHandler::addBook(const std::vector<std::string>& args) {
         return;
     }
 
-    int id = std::stoi(args[1]);
+    int id = validateId(args[1])
+    if (id == 0) {
+        return
+    }
     std::string title = args[2];
     std::string author = args[3];
     int year = std::stoi(args[4]);
@@ -72,7 +75,10 @@ void CLIHandler::borrowBook(const std::vector<std::string>& args) {
         return;
     }
 
-    int id = args[1];
+    int id = validateId(args[1])
+    if (id == 0) {
+        return
+    }
 
     if (library.borrowBook(id)) {
         std::cout << "Book borrowed successfully.\n";
@@ -87,7 +93,10 @@ void CLIHandler::returnBook(const std::vector<std::string>& args) {
         return;
     }
 
-    int id = args[1];
+    int id = validateId(args[1])
+    if (id == 0) {
+        return
+    }
 
     if (library.returnBook(id)) {
         std::cout << "Book returned successfully.\n";
@@ -108,4 +117,15 @@ void CLIHandler::displayHelp() const {
               << "  borrow         Borrow a book (id)\n"
               << "  return         Return a borrowed book (id)\n"
               << "  list           List all books in the library\n";
+}
+
+int validateId(const std::string& str input) {
+    try {
+        return std::stoi(input);
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Error: Invalid ID format. Please provide a positive numeric value.\n";
+    } catch (const std::out_of_range& e) {
+        std::cerr << "Error: ID value is out of range.\n";
+    }
+    return 0
 }
