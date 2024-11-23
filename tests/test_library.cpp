@@ -59,8 +59,8 @@ TEST_CASE("Library: List Books") {
 
     // Reset std::cout to its original state
     std::cout.rdbuf(oldCout);
-    std::string expectedOutput = "Id: 1, Title: Title1, Author: Author1, Year: 2021, Available: true\n"
-                                 "Id: 2, Title: Title2, Author: Author2, Year: 2022, Available: true\n";
+    std::string expectedOutput = "Id: 1, Title: Title1, Author: Author1, Year: 2021, Available: Yes\n"
+                                 "Id: 2, Title: Title2, Author: Author2, Year: 2022, Available: Yes\n";
 
     REQUIRE(output.str() == expectedOutput);
 }
@@ -80,7 +80,7 @@ TEST_CASE("Library: Find Book by ID") {
 
     std::cout.rdbuf(oldCout);
 
-    std::string expectedOutput = "Id: 1, Title: Unique Title, Author: Author1, Year: 2021, Available: true\n"
+    std::string expectedOutput = "Id: 1, Title: Unique Title, Author: Author1, Year: 2021, Available: Yes\n"
                                  "No book found with ID: 2\n";
 
     REQUIRE(output.str() == expectedOutput);
@@ -101,7 +101,7 @@ TEST_CASE("Library: Find Book by Title") {
     // Reset std::cout
     std::cout.rdbuf(oldCout);
 
-    std::string expectedOutput = "Id: 1, Title: Searchable Title, Author: Author1, Year: 2021, Available: true\n"
+    std::string expectedOutput = "Id: 1, Title: Searchable Title, Author: Author1, Year: 2021, Available: Yes\n"
                                  "No book found with title: Non-Existent Title\n";
 
     REQUIRE(output.str() == expectedOutput);
@@ -124,8 +124,8 @@ TEST_CASE("Library: Find Book by Author") {
     // Reset std::cout
     std::cout.rdbuf(oldCout); 
 
-    std::string expectedOutput = "Id: 1, Title: Title1, Author: Common Author, Year: 2021, Available: true\n"
-                                 "Id: 2, Title: Title2, Author: Common Author, Year: 2022, Available: true\n";
+    std::string expectedOutput = "Id: 1, Title: Title1, Author: Common Author, Year: 2021, Available: Yes\n"
+                                 "Id: 2, Title: Title2, Author: Common Author, Year: 2022, Available: Yes\n";
 
     REQUIRE(output.str() == expectedOutput);
 }

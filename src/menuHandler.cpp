@@ -33,7 +33,19 @@ void MenuHandler::addBook() {
     std::string title, author;
     int id,year;
     std::cout << "Enter id: ";
-    std::cin >> id;
+    while (true) {
+        std::cin >> id;
+        // Check if the input is valid
+        if (std::cin.fail()) {
+            // Clear the error flag
+            std::cin.clear();  
+            // Discard invalid input
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
+            std::cout << "Invalid input. Please enter a valid integer: ";
+        } else {
+            break;
+        }
+    }
     std::cout << "Enter title: ";
     std::cin.ignore();
     std::getline(std::cin, title);
@@ -81,7 +93,19 @@ void MenuHandler::searchBook() {
 void MenuHandler::borrowBook() {
     int id;
     std::cout << "Enter id to borrow: ";
-    std::cin >> id;
+    while (true) {
+        std::cin >> id;
+        // Check if the input is valid
+        if (std::cin.fail()) {
+            // Clear the error flag
+            std::cin.clear();  
+            // Discard invalid input
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
+            std::cout << "Invalid input. Please enter a valid integer: ";
+        } else {
+            break;
+        }
+    }
 
     if (!library.borrowBook(id)) {
         std::cout << "Book not available or doesn't exist.\n";
@@ -93,7 +117,19 @@ void MenuHandler::borrowBook() {
 void MenuHandler::returnBook() {
     int id;
     std::cout << "Enter id to return: ";
-    std::cin >> id;
+    while (true) {
+        std::cin >> id;
+        // Check if the input is valid
+        if (std::cin.fail()) {
+            // Clear the error flag
+            std::cin.clear();  
+            // Discard invalid input
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
+            std::cout << "Invalid input. Please enter a valid integer: ";
+        } else {
+            break;
+        }
+    }
 
     if (!library.returnBook(id)) {
         std::cout << "Book not found in borrowed list.\n";
