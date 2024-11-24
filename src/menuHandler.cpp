@@ -41,7 +41,7 @@ void MenuHandler::addBook() {
     std::getline(std::cin, title);
     std::cout << "Enter author: ";
     std::getline(std::cin, author);
-    year = readAndValidateYear
+    year = readAndValidateYear();
 
     library.addBook(Book(id, title, author, year, true));
 }
@@ -130,7 +130,7 @@ int readAndValidateYear() {
     tm* currentTime = localtime(&t);
     int currentYear = currentTime->tm_year + 1900;
 
-    std::string errMsg = "Invalid year. Please enter a value between 1000 to " + currentYear;
+    std::string errMsg = "Invalid year. Please enter a value between 1000 to the current year.";
     int year;
     std::cout << "Enter year of publishing: ";
     while (true) {
