@@ -7,7 +7,7 @@
 // Add a book to the library
 void Library::addBook(const Book& book) {
     // Check for duplicate ID
-     if (idExists(book.getId())) {  
+    if (book.find(book.getId()) != book.end()) {
         std::cerr << "Error: Duplicate ID (" << book.getId() << ") not allowed." << std::endl;
         return;
     }
@@ -85,8 +85,4 @@ void Library::saveToDb() const {
 // Load the data from the file
 void Library::loadFromDb() {
     books = Storage::loadData();
-}
-
-bool idExists(unsigned int id) const{
-    return book.find(id) != book.end();
 }

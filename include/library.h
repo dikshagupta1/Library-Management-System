@@ -22,6 +22,4 @@ public:
     void loadFromDb();
 };
 
-bool idExists(unsigned int id) const;
-
 #endif // LIBRARY_H
