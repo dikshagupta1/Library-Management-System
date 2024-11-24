@@ -13,10 +13,10 @@ private:
 public:
     void addBook(const Book& book);
     void findBookByTitle(const std::string& query) const;
-    void findBookById(int id) const;
+    void findBookById(unsigned int id) const;
     void findBookByAuthor(const std::string& author) const;
-    bool borrowBook(int id);
-    bool returnBook(int id);
+    bool borrowBook(unsigned int id);
+    bool returnBook(unsigned int id);
     void listBooks() const;
     void saveToDb() const;
     void loadFromDb();

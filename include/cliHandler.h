@@ -21,6 +21,6 @@ private:
     void displayHelp() const;
 };
 
-int validateId(const std::string& input);
+unsigned int validateId(const std::string& input);
 
 #endif // CLIHANDLER_H

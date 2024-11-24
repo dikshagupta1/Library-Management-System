@@ -35,7 +35,7 @@ void CLIHandler::addBook(const std::vector<std::string>& args) {
         return;
     }
 
-    int id = validateId(args[1]);
+    unsigned int id = validateId(args[1]);
     if (id == 0) {
         return;
     }
@@ -63,7 +63,11 @@ void CLIHandler::searchBook(const std::vector<std::string>& args) {
     } else if (mode == "author") {
         library.findBookByAuthor(query);
     } else if (mode == "id") {
-        library.findBookById(std::stoi(query));
+        unsigned int id = validateId(query);
+        if (id == 0) {
+            return;
+        }
+        library.findBookById(id);
     } else {
         std::cerr << "Error: Invalid search mode. Use 'title', 'author', or 'id'.\n";
     }
@@ -75,7 +79,7 @@ void CLIHandler::borrowBook(const std::vector<std::string>& args) {
         return;
     }
 
-    int id = validateId(args[1]);
+    unsigned int id = validateId(args[1]);
     if (id == 0) {
         return;
     }
@@ -93,7 +97,7 @@ void CLIHandler::returnBook(const std::vector<std::string>& args) {
         return;
     }
 
-    int id = validateId(args[1]);
+    unsigned int id = validateId(args[1]);
     if (id == 0) {
         return;
     }
@@ -119,9 +123,9 @@ void CLIHandler::displayHelp() const {
               << "  list           List all books in the library\n";
 }
 
-int validateId(const std::string& input) {
+unsigned int validateId(const std::string& input) {
     try {
-        return std::stoi(input);
+        return std::stoul(input);
     } catch (const std::invalid_argument& e) {
         std::cerr << "Error: Invalid ID format. Please provide a positive numeric value.\n";
     } catch (const std::out_of_range& e) {

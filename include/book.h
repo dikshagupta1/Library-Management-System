@@ -6,7 +6,7 @@
 
 class Book {
 private:
-    int id;
+    unsigned int id;
     std::string title;
     std::string author;
     int year;
@@ -14,7 +14,7 @@ private:
 
 public:
     // Constructors
-    Book(int id, const std::string title, const std::string author, int year, bool available);
+    Book(unsigned int id, const std::string title, const std::string author, int year, bool available);
 
     // Member functions
     void display() const;
@@ -24,7 +24,7 @@ public:
     const std::string& getTitle() const;
     const std::string& getAuthor() const;
     int getYear() const;
-    int getId() const;
+    unsigned int getId() const;
     bool isAvailable() const;
 
     friend std::ostream& operator<<(std::ostream& os, const Book& book);

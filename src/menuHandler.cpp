@@ -31,16 +31,16 @@ void MenuHandler::start() {
 
 void MenuHandler::addBook() {
     std::string title, author;
-    int id,year;
+    unsigned int id;
+    int year;
     std::cout << "Enter id: ";
     while (true) {
         std::cin >> id;
         // Check if the input is valid
         if (std::cin.fail()) {
             // Clear the error flag
-            std::cin.clear();  
-            // Discard invalid input
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
+            std::cin.clear(); 
+            std::cin.ignore();
             std::cout << "Invalid input. Please enter a valid integer: ";
         } else {
             break;
@@ -71,7 +71,7 @@ void MenuHandler::searchBook() {
     std::cin.ignore(); 
 
     if (searchType == 1) {
-        int id;
+        unsigned int id;
         std::cout << "Enter Book ID: ";
         std::cin >> id;
         library.findBookById(id);
@@ -91,7 +91,7 @@ void MenuHandler::searchBook() {
 }
 
 void MenuHandler::borrowBook() {
-    int id;
+    unsigned int id;
     std::cout << "Enter id to borrow: ";
     while (true) {
         std::cin >> id;
@@ -99,8 +99,7 @@ void MenuHandler::borrowBook() {
         if (std::cin.fail()) {
             // Clear the error flag
             std::cin.clear();  
-            // Discard invalid input
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
+            std::cin.ignore();
             std::cout << "Invalid input. Please enter a valid integer: ";
         } else {
             break;
@@ -115,16 +114,15 @@ void MenuHandler::borrowBook() {
 }
 
 void MenuHandler::returnBook() {
-    int id;
+    unsigned int id;
     std::cout << "Enter id to return: ";
     while (true) {
         std::cin >> id;
         // Check if the input is valid
         if (std::cin.fail()) {
             // Clear the error flag
-            std::cin.clear();  
-            // Discard invalid input
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');  
+            std::cin.clear();
+            std::cin.ignore();
             std::cout << "Invalid input. Please enter a valid integer: ";
         } else {
             break;
