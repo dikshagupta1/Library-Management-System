@@ -34,7 +34,7 @@
 ### Time Complexity
 |Operation|Time Complexity|
 |---------|:-------------:|
-|Add a Book	     | O(1) |
+|Add a Book	     | O(n) |
 |Borrow a Book	  | O(n) |
 |Return a Book	  | O(n) |
 |Search a Book	  | O(n) |

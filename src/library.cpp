@@ -7,9 +7,11 @@
 // Add a book to the library
 void Library::addBook(const Book& book) {
     // Check for duplicate ID
-    if (book.find(book.getId()) != book.end()) {
-        std::cerr << "Error: Duplicate ID (" << book.getId() << ") not allowed." << std::endl;
-        return;
+    for (auto& b : books) {
+        if (b.getId() == book.getId()) {
+            std::cerr << "Error: Duplicate ID (" << book.getId() << ") not allowed." << std::endl;
+            return;
+        }
     }
     books.push_back(book);
     saveToDb();

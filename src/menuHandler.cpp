@@ -32,6 +32,7 @@ void MenuHandler::start() {
 void MenuHandler::addBook() {
     std::string title, author;
     int year;
+    unsigned int id;
     id = readAndValidateId();
     std::cout << "Enter title: ";
     std::cin.ignore();
@@ -58,6 +59,7 @@ void MenuHandler::searchBook() {
     std::cin.ignore(); 
 
     if (searchType == 1) {
+        unsigned int id;
         id = readAndValidateId()
         library.findBookById(id);
     } else if (searchType == 2) {
@@ -76,6 +78,7 @@ void MenuHandler::searchBook() {
 }
 
 void MenuHandler::borrowBook() {
+    unsigned int id;
     id = readAndValidateId()
 
     if (!library.borrowBook(id)) {
@@ -86,6 +89,7 @@ void MenuHandler::borrowBook() {
 }
 
 void MenuHandler::returnBook() {
+    unsigned int id;
     id = readAndValidateId()
     if (!library.returnBook(id)) {
         std::cout << "Book not found in borrowed list.\n";
