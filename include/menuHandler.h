@@ -19,5 +19,6 @@ private:
 };
 
 unsigned int readAndValidateId();
+int readAndValidateYear();
 
 #endif // MENUHANDLER_H

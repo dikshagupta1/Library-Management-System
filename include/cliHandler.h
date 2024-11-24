@@ -22,5 +22,6 @@ private:
 };
 
 unsigned int validateId(const std::string& input);
+int validateYear(const std::string& input);
 
 #endif // CLIHANDLER_H

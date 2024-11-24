@@ -1,5 +1,5 @@
 ## Future Improvements
-- Adding rigorous error handling.
+- Add rigorous error handling.
 - Implement more specialized types of books (like EBook or AudioBook).
 - Add notification support that sends out a notification to the user waiting for a book to be available.
 - Add user authentication.

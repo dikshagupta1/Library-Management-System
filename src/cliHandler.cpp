@@ -1,6 +1,8 @@
 #include "cliHandler.h"
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
+#include <ctime>
 
 CLIHandler::CLIHandler(Library& library) : library(library) {}
 
@@ -41,7 +43,10 @@ void CLIHandler::addBook(const std::vector<std::string>& args) {
     }
     std::string title = args[2];
     std::string author = args[3];
-    int year = std::stoi(args[4]);
+    int year = validateYear(args[4]);
+    if (year == 0) {
+        return;
+    }
 
     Book book(id, title, author, year, true);
     library.addBook(book);
@@ -131,6 +136,29 @@ unsigned int validateId(const std::string& input) {
             return 0;
         }
         return id;
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Error: Invalid ID format. Please provide a positive numeric value.\n";
+    } catch (const std::out_of_range& e) {
+        std::cerr << "Error: ID value is out of range.\n";
+    }
+    return 0;
+}
+
+int validateYear(const std::string& input) {
+    int year;
+
+    // Get the current year
+    time_t t = time(nullptr);
+    tm* currentTime = localtime(&t);
+    int currentYear = currentTime->tm_year + 1900;
+
+    try {
+        year = std::stoi(input);
+        if (year < 1000 || year > currentYear) {
+            std::cerr << "Error: Invalid year of pubishing. It must be between 1000 and " << currentYear << "." << "\n";
+            return 0;
+        }
+        return year;
     } catch (const std::invalid_argument& e) {
         std::cerr << "Error: Invalid ID format. Please provide a positive numeric value.\n";
     } catch (const std::out_of_range& e) {

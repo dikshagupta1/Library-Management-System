@@ -1,6 +1,8 @@
 #include "menuHandler.h"
 #include <iostream>
 #include <string>
+#include <stdexcept>
+#include <ctime>
 
 MenuHandler::MenuHandler(Library& library) : library(library) {}
 
@@ -39,8 +41,7 @@ void MenuHandler::addBook() {
     std::getline(std::cin, title);
     std::cout << "Enter author: ";
     std::getline(std::cin, author);
-    std::cout << "Enter year: ";
-    std::cin >> year;
+    year = readAndValidateYear
 
     library.addBook(Book(id, title, author, year, true));
 }
@@ -121,4 +122,30 @@ unsigned int readAndValidateId() {
         }
     }
     return id;
+}
+
+int readAndValidateYear() {
+    // Get the current year
+    time_t t = time(nullptr);
+    tm* currentTime = localtime(&t);
+    int currentYear = currentTime->tm_year + 1900;
+
+    std::string errMsg = "Invalid year. Please enter a value between 1000 to " + currentYear;
+    int year;
+    std::cout << "Enter year of publishing: ";
+    while (true) {
+        std::cin >> year;
+        // Check if the input is valid
+        if (std::cin.fail()) {
+            // Clear the error flag
+            std::cin.clear();
+            std::cin.ignore();
+            std::cout << errMsg;
+        } else if (year < 1000 || year > currentYear) {
+            std::cout << errMsg;
+        } else {
+            break;
+        }
+    }
+    return year;
 }
