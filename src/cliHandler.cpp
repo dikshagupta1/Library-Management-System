@@ -116,16 +116,22 @@ void CLIHandler::listBooks() {
 void CLIHandler::displayHelp() const {
     std::cout << "Available commands:\n"
               << "  help           Show this help message\n"
-              << "  add            Add a new book (id, title, author, year)\n"
-              << "  search         Search for a book using the modes - id, title or author \n"
-              << "  borrow         Borrow a book (id)\n"
-              << "  return         Return a borrowed book (id)\n"
+              << "  add            Add a new book (id, title, author, year). Usage: add <id> <title> <author> <year>\n"
+              << "  search         Search for a book using the modes - id, title or author. Usage: search <title|author|id> <query>\n"
+              << "  borrow         Borrow a book (id). Usage: borrow <id>\n"
+              << "  return         Return a borrowed book (id). Usage: return <id>\n"
               << "  list           List all books in the library\n";
 }
 
 unsigned int validateId(const std::string& input) {
+    unsigned int id;
     try {
-        return std::stoul(input);
+        id = std::stoul(input);
+        if (id <= 0) {
+            std::cerr << "Error: Invalid ID format. Please provide a positive numeric value.\n";
+            return 0;
+        }
+        return id;
     } catch (const std::invalid_argument& e) {
         std::cerr << "Error: Invalid ID format. Please provide a positive numeric value.\n";
     } catch (const std::out_of_range& e) {

@@ -31,21 +31,8 @@ void MenuHandler::start() {
 
 void MenuHandler::addBook() {
     std::string title, author;
-    unsigned int id;
     int year;
-    std::cout << "Enter id: ";
-    while (true) {
-        std::cin >> id;
-        // Check if the input is valid
-        if (std::cin.fail()) {
-            // Clear the error flag
-            std::cin.clear(); 
-            std::cin.ignore();
-            std::cout << "Invalid input. Please enter a valid integer: ";
-        } else {
-            break;
-        }
-    }
+    id = readAndValidateId();
     std::cout << "Enter title: ";
     std::cin.ignore();
     std::getline(std::cin, title);
@@ -71,9 +58,7 @@ void MenuHandler::searchBook() {
     std::cin.ignore(); 
 
     if (searchType == 1) {
-        unsigned int id;
-        std::cout << "Enter Book ID: ";
-        std::cin >> id;
+        id = readAndValidateId()
         library.findBookById(id);
     } else if (searchType == 2) {
         std::string title;
@@ -91,20 +76,7 @@ void MenuHandler::searchBook() {
 }
 
 void MenuHandler::borrowBook() {
-    unsigned int id;
-    std::cout << "Enter id to borrow: ";
-    while (true) {
-        std::cin >> id;
-        // Check if the input is valid
-        if (std::cin.fail()) {
-            // Clear the error flag
-            std::cin.clear();  
-            std::cin.ignore();
-            std::cout << "Invalid input. Please enter a valid integer: ";
-        } else {
-            break;
-        }
-    }
+    id = readAndValidateId()
 
     if (!library.borrowBook(id)) {
         std::cout << "Book not available or doesn't exist.\n";
@@ -114,21 +86,7 @@ void MenuHandler::borrowBook() {
 }
 
 void MenuHandler::returnBook() {
-    unsigned int id;
-    std::cout << "Enter id to return: ";
-    while (true) {
-        std::cin >> id;
-        // Check if the input is valid
-        if (std::cin.fail()) {
-            // Clear the error flag
-            std::cin.clear();
-            std::cin.ignore();
-            std::cout << "Invalid input. Please enter a valid integer: ";
-        } else {
-            break;
-        }
-    }
-
+    id = readAndValidateId()
     if (!library.returnBook(id)) {
         std::cout << "Book not found in borrowed list.\n";
     } else {
@@ -138,4 +96,27 @@ void MenuHandler::returnBook() {
 
 void MenuHandler::listBooks() {
     library.listBooks();
+}
+
+// This function will read the id and validate it.
+unsigned int readAndValidateId()
+{
+    std::string errMsg = "Invalid input. Please enter a unique positive number.";
+    unsigned int id;
+    std::cout << "Enter Book id: ";
+    while (true) {
+        std::cin >> id;
+        // Check if the input is valid
+        if (std::cin.fail()) {
+            // Clear the error flag
+            std::cin.clear();
+            std::cin.ignore();
+            std::cout << errMsg;
+        } else if (id <= 0) {
+            std::cout << errMsg;
+        } else {
+            break;
+        }
+    }
+    return id;
 }
