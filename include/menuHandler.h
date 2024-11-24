@@ -18,4 +18,6 @@ private:
     void listBooks();
 };
 
+unsigned int readAndValidateId();
+
 #endif // MENUHANDLER_H

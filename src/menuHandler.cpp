@@ -43,7 +43,6 @@ void MenuHandler::addBook() {
     std::cin >> year;
 
     library.addBook(Book(id, title, author, year, true));
-    std::cout << "Book added successfully.\n";
 }
 
 void MenuHandler::searchBook() {
@@ -60,7 +59,7 @@ void MenuHandler::searchBook() {
 
     if (searchType == 1) {
         unsigned int id;
-        id = readAndValidateId()
+        id = readAndValidateId();
         library.findBookById(id);
     } else if (searchType == 2) {
         std::string title;
@@ -79,7 +78,7 @@ void MenuHandler::searchBook() {
 
 void MenuHandler::borrowBook() {
     unsigned int id;
-    id = readAndValidateId()
+    id = readAndValidateId();
 
     if (!library.borrowBook(id)) {
         std::cout << "Book not available or doesn't exist.\n";
@@ -90,7 +89,7 @@ void MenuHandler::borrowBook() {
 
 void MenuHandler::returnBook() {
     unsigned int id;
-    id = readAndValidateId()
+    id = readAndValidateId();
     if (!library.returnBook(id)) {
         std::cout << "Book not found in borrowed list.\n";
     } else {
@@ -103,8 +102,7 @@ void MenuHandler::listBooks() {
 }
 
 // This function will read the id and validate it.
-unsigned int readAndValidateId()
-{
+unsigned int readAndValidateId() {
     std::string errMsg = "Invalid input. Please enter a unique positive number.";
     unsigned int id;
     std::cout << "Enter Book id: ";
@@ -119,6 +117,7 @@ unsigned int readAndValidateId()
         } else if (id <= 0) {
             std::cout << errMsg;
         } else {
+            std::cout << "id is:" <<id;
             break;
         }
     }

@@ -46,7 +46,6 @@ void CLIHandler::addBook(const std::vector<std::string>& args) {
     Book book(id, title, author, year, true);
     library.addBook(book);
 
-    std::cout << "Book added successfully.\n";
 }
 
 void CLIHandler::searchBook(const std::vector<std::string>& args) {
@@ -126,7 +125,7 @@ void CLIHandler::displayHelp() const {
 unsigned int validateId(const std::string& input) {
     unsigned int id;
     try {
-        id = std::stoul(input);
+        id = std::stoi(input);
         if (id <= 0) {
             std::cerr << "Error: Invalid ID format. Please provide a positive numeric value.\n";
             return 0;
