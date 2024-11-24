@@ -5,18 +5,16 @@ project(LibraryManagementSystem)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-message(STATUS "Project Name: ${PROJECT_NAME}")
-message(STATUS "Source Directory: ${PROJECT_SOURCE_DIR}")
-message(STATUS "Binary Directory: ${PROJECT_BINARY_DIR}")
+message(STATUS "Building Project: ${PROJECT_NAME}")
 
 # Add source files
 set(SOURCES
-    src/main.cpp
-    src/library.cpp
-    src/book.cpp
-    src/storage.cpp
-    src/cliHandler.cpp
-    src/menuHandler.cpp
+    ${CMAKE_SOURCE_DIR}/src/main.cpp
+    ${CMAKE_SOURCE_DIR}/src/library.cpp
+    ${CMAKE_SOURCE_DIR}/src/book.cpp
+    ${CMAKE_SOURCE_DIR}/src/storage.cpp
+    ${CMAKE_SOURCE_DIR}/src/cliHandler.cpp
+    ${CMAKE_SOURCE_DIR}/src/menuHandler.cpp
 )
 
 # Include directories
@@ -32,7 +30,7 @@ FetchContent_MakeAvailable(json)
 option(ENABLE_TESTS "Enable or disable building tests" OFF)
 message(STATUS "Building with Unit tests: ${ENABLE_TESTS}")
 if (ENABLE_TESTS)
-    add_subdirectory(tests)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/tests)
 endif()
 
 # Add executable target

@@ -1,11 +1,11 @@
 # Set the test source files
 set(TEST_SOURCES
     test_library.cpp
-    ../src/library.cpp
-    ../src/book.cpp
-    ../src/storage.cpp
-    ../src/cliHandler.cpp
-    ../src/menuHandler.cpp
+    ${CMAKE_SOURCE_DIR}/src/library.cpp
+    ${CMAKE_SOURCE_DIR}/src/book.cpp
+    ${CMAKE_SOURCE_DIR}/src/storage.cpp
+    ${CMAKE_SOURCE_DIR}/src/cliHandler.cpp
+    ${CMAKE_SOURCE_DIR}/src/menuHandler.cpp
 )
 
 # Include directories

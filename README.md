@@ -186,7 +186,7 @@ Unit tests are included to ensure the correctness of the system.
    ```
 2. Execute the test binary:
    ```bash
-   ./tests
+   ./tests/tests
    ```
 
 ---
