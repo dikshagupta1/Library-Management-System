@@ -44,6 +44,7 @@ LibraryManagementSystem/
 |   └── library_data.json # Persistent JSON data file stored in the directory provided by ENV. Check [configuration](#configuration)
 |├── tests/
 |   └── test_library.cpp  # Unit tests for library functions
+│   └── CMakeLists.txt    # Build test
 |├── CMakeLists.txt       # Build configuration file
 |└── README.md            # Documentation
 ```
