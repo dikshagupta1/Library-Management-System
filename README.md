@@ -41,7 +41,7 @@ LibraryManagementSystem/
 |   |├── Storage.h        # Header for JSON storage
 |   |├── Library.h        # Header for library logic
 |├── data/
-|   └── library_data.json # Persistent JSON data file stored in the directory provided by ENV. Check [configuration](#configuration)
+|   └── library-db.json # Persistent JSON data file stored in the directory provided by ENV. Check [configuration](#configuration)
 |├── tests/
 |   └── test_library.cpp  # Unit tests for library functions
 │   └── CMakeLists.txt    # Build test
@@ -77,15 +77,7 @@ LibraryManagementSystem/
     The executable gets generated in the build directory.
     
     #### **Using Docker**
-    Build the Docker image:
-    ```bash
-    docker build -t library-management-system .
-    ```
-
-    Run the container:
-    ```bash
-    docker run --rm library-management-system
-    ```
+    Future Enhancement
 ---
 
 ## Configuration
@@ -109,7 +101,7 @@ The JSON file storing library data is configured via an environment variable for
 ### CLI-Based Approach
 1. Goto the build directory and run the cli command to access the help doc:
     ```bash
-   ./LibraryManagementSystem help
+   sudo ./LibraryManagementSystem help
     ```
 
 2. Enter specific commands:
@@ -122,7 +114,7 @@ The JSON file storing library data is configured via an environment variable for
 ### Menu-Based Approach
 1. Goto the build directory and run the application:
     ```bash
-   ./LibraryManagementSystem
+   sudo ./LibraryManagementSystem
     ```
 2. Use the numbered menu options displayed to navigate through the system.
 3. Perform operations such as adding, borrowing, returning, listing, or searching for books.
@@ -130,25 +122,25 @@ The JSON file storing library data is configured via an environment variable for
 ### Example
 **CLI Interaction:**
 ```
-$ ./LibraryManagementSystem add 1 "Midnight's Children" "Salman Rushdie" 1981
+$ sudo ./LibraryManagementSystem add 1 "Midnight's Children" "Salman Rushdie" 1981
 Book added successfully.
 ```
 ```
-$ ./LibraryManagementSystem list
+$ sudo ./LibraryManagementSystem list
 Id: 1, Title: Midnight's Children, Author: Salman Rushdie, Year:1981, Available: Yes
 ```
 ```
-$ ./LibraryManagementSystem borrow 1
+$ sudo ./LibraryManagementSystem borrow 1
 Book borrowed successfully.
 ```
 ```
-$ ./LibraryManagementSystem list
+$ sudo ./LibraryManagementSystem list
 Id: 1, Title: Midnight's Children, Author: Salman Rushdie, Year: 1981, Available: No
 ```
 
 **Menu-Based Interaction:**
 ```
-$ ./LibraryManagementSystem
+$ sudo ./LibraryManagementSystem
 --- Library Management System ---
 1. Add Book
 2. Search Book
@@ -182,11 +174,11 @@ Unit tests are included to ensure the correctness of the system.
    mkdir build 
    cd build
    cmake -DENABLE_TESTS=ON ..
-   make
+   cmake --build .
    ```
 2. Execute the test binary:
    ```bash
-   ./tests/tests
+   sudo ./tests/tests
    ```
 
 ---
