@@ -22,7 +22,7 @@ This Library Management System is a comprehensive solution for managing books an
 7. [Extending the System](#extending-the-system)
 8. [Known Issues and Limitations](#known-issues-and-limitations)
 9. [Future Enhancements](#future-enhancements)
-10. [Developer Notes](#developer-notes)
+10. [Architecture Overview](#architecture-overview)
 
 ---
 
@@ -41,7 +41,7 @@ LibraryManagementSystem/
 |   |├── Storage.h        # Header for JSON storage
 |   |├── Library.h        # Header for library logic
 |├── data/
-|   └── library_data.json # Persistent JSON data file
+|   └── library_data.json # Persistent JSON data file stored in the directory provided by ENV. Check [configuration](#configuration)
 |├── tests/
 |   └── test_library.cpp  # Unit tests for library functions
 |├── CMakeLists.txt       # Build configuration file
@@ -210,6 +210,6 @@ To add new features:
 #### This is an initial MVP of the Library Management System. Please read the planned future enhancements [here](docs/FUTURE_ENHANCEMENTS.md).
 ---
 
-## Developer Notes
-#### For notes about the design principles and decisions read [Developer Notes](docs/DEVELOPER_NOTES.md).
+## Architecture Overview
+#### For architecture overview and developer notes about the design principles and decisions read [Architecture Overview](docs/ARCHITECTURAL_OVERVIEW.md).
 ---

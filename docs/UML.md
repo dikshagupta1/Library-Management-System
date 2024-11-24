@@ -3,5 +3,7 @@
 - Book: Represents individual book objects.
 - Library: Manages the collection of books and provides operations like search, add, borrow, and return.
 - Storage: Handles persistence of book data in JSON format.
+- MenuHandler: User-friendly, interactive menu for navigating library operations.
+- CLIHandler: Enables advanced users to execute specific commands directly.
 
 ![alt text](uml.png)

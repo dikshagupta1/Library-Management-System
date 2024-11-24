@@ -1,3 +1,15 @@
+# Architecture Overview
+The Library Management System is designed with modular components, each responsible for specific functionalities, ensuring clarity, reusability, and scalability. Below is the UML diagram illustrating the relationships and responsibilities of various classes in the project:
+
+## The class structure of the Library Management System consists of the following components:
+
+- Book: Represents individual book entities with attributes like title, author, and availability.
+- Library: Manages the collection of books and provides operations such as search, borrow, and return.
+- CLIHandler: Handles command-line interactions, parsing user input, and invoking library operations.
+- MenuHandler: Facilitates an interactive menu-based interface for the system.
+- Storage: Manages data persistence to and from a JSON file.
+
+![alt text](uml.png)
 
 ## Developer Notes
 
