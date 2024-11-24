@@ -9,7 +9,7 @@ void Library::addBook(const Book& book) {
     // Check for duplicate ID
     for (auto& b : books) {
         if (b.getId() == book.getId()) {
-            std::cerr << "Error: Duplicate ID (" << book.getId() << ") not allowed." << std::endl;
+            std::cout << "Error: The ID (" << book.getId() << ") already exists." << "\n";
             return;
         }
     }

@@ -104,7 +104,7 @@ void MenuHandler::listBooks() {
 // This function will read the id and validate it.
 unsigned int readAndValidateId() {
     std::string errMsg = "Invalid input. Please enter a unique positive number.";
-    unsigned int id;
+    int id;
     std::cout << "Enter Book id: ";
     while (true) {
         std::cin >> id;
@@ -117,7 +117,6 @@ unsigned int readAndValidateId() {
         } else if (id <= 0) {
             std::cout << errMsg;
         } else {
-            std::cout << "id is:" <<id;
             break;
         }
     }

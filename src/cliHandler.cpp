@@ -123,7 +123,7 @@ void CLIHandler::displayHelp() const {
 }
 
 unsigned int validateId(const std::string& input) {
-    unsigned int id;
+    int id;
     try {
         id = std::stoi(input);
         if (id <= 0) {
