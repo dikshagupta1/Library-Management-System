@@ -1,0 +1,13 @@
+## Future Enhancements
+- Make the Book Id system generated and alphanumeric.
+- Add support for deletion of a book from the library system.
+- Add support for user accounts and authentication.
+- Add rigorous error handling.
+- Implement more specialized types of books (like EBook or AudioBook).
+- Add notification support that sends out a notification to the user waiting for a book to be available.
+- Enhance search to use hash maps for O(1) lookups.
+- Adding REST APIs on top of the CLIs so that it becomes easy to integrate with the UI. 
+- Introduce a GUI-based version of the system.
+- Implement advanced search features (e.g., by multiple criteria).
+- Introduce a GUI-based version of the system.
+- Add automated tests for better maintainability.

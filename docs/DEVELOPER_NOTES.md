@@ -1,4 +1,6 @@
 
+## Developer Notes
+
 ### Design Principles
 1. **Single Responsibility Principle (SRP)**:
    - Definition: A class should have only one reason to change, meaning it should have only one responsibility or job.
@@ -18,9 +20,14 @@
    - Definition: High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces).
    - In this project if we later replace file storage with a database system, the library management logic would not need to change, only the data persistence class.
 
+### Key Design Decisions
+- **Use of Include Guards:** Prevents multiple inclusions of header files.
+
+- **Modular Design:** Ensures separation of concerns, making the system maintainable.
+
+- **Validation Functions:** Centralized validation improves code reuse.
 
 ### Design Focus
-   
 1. **Modularity**:
    - Code is divided into reusable components for better maintainability.
 
@@ -30,6 +37,12 @@
 3. **Persistence**:
    - Data is saved and loaded using JSON to maintain state across runs.
 
+### Standards and Practices
+- **C++17 Features:** Leverages modern C++ features like `std::optional`, `std::filesystem`, and `constexpr`.
+
+- **Error Handling:** Consistent use of exceptions for error reporting.
+
+- **Documentation:** Inline comments and meaningful function names for readability.
 
 ### Time Complexity
 |Operation|Time Complexity|
@@ -39,23 +52,3 @@
 |Return a Book	  | O(n) |
 |Search a Book	  | O(n) |
 |List All Books  | O(n) |
-
-
-Project Files Checklist
-Source Code:
-
-CMakeLists.txt (for CMake build system)
-Dockerfile (for containerization)
-Source files (main.cpp, Library.cpp, Book.cpp, Database.cpp)
-Header files (Library.h, Book.h, Database.h)
-Test Cases:
-
-A test suite using a framework like Google Test or Catch2.
-Persistence Files:
-
-JSON or text file for storing book data (books.json).
-Documentation:
-
-README.md (with build instructions, usage, and design principles)
-UML diagrams and explanations (already provided)
-Time complexity analysis.
