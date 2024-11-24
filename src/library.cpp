@@ -11,7 +11,7 @@ void Library::addBook(const Book& book) {
 }
 
 // Borrow a book
-bool Library::borrowBook(int id) {
+bool Library::borrowBook(unsigned int id) {
     for (auto& book : books) {
         if (book.getId() == id && book.isAvailable()) {
             book.borrow();
@@ -23,7 +23,7 @@ bool Library::borrowBook(int id) {
 }
 
 // Return a borrowed book
-bool Library::returnBook(int id) {
+bool Library::returnBook(unsigned int id) {
     for (auto& book : books) {
         if (book.getId() == id && !book.isAvailable()) {
             book.returnBook();
@@ -42,7 +42,7 @@ void Library::listBooks() const {
 }
 
 // Search book by ID
-void Library::findBookById(int id) const {
+void Library::findBookById(unsigned int id) const {
      for (const auto& book : books) {
         if (book.getId() == id) {
             std::cout << book << "\n";
